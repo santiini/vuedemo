@@ -34,7 +34,9 @@ router.beforeEach((to, from, next) => {
 });
 
 /* eslint-disable no-new */
-new Vue({
+// tips： 导出 Vue 实例， 可以在js中使用；
+
+const app = new Vue({
     router,
     render: h => h(App),
     // // 事件处理器, eventHub;
@@ -45,3 +47,17 @@ new Vue({
         }
     }
 }).$mount('#app-box')
+
+// new Vue({
+//     router,
+//     render: h => h(App),
+//     // // 事件处理器, eventHub;
+//     data() {
+//         return {
+//             // 这是 this.$root 上的数据;
+//             eventHub: new Vue()
+//         }
+//     }
+// }).$mount('#app-box')
+
+export default app;
