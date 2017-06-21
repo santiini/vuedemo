@@ -1,7 +1,19 @@
 <template>
   <div id="app">
-    <x-header></x-header>
-    <router-view></router-view>
+    <x-header>keep-alive的测试</x-header>
+    <!--<router-view></router-view>-->
+    <!--keep-alive的两种形式-->
+
+    <!--1.keep-alive的 include/exclude属性，参数是组件名称;-->
+    <!--<keep-alive include="keep-alive,keep">
+      <router-view></router-view>
+    </keep-alive>-->
+
+    <!--2.keep-alive 结合 v-if和 route.meta的判断-->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
