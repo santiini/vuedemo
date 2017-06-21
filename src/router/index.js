@@ -68,5 +68,29 @@ export default new Router({
             isShown: true,
             name: 'vue-draggable'
         }
+    }, {
+        path: '/keep',
+        name: 'keep',
+        component: resolve => require(['../page/keep-alive/Kepp'], resolve),
+        meta: {
+            isShown: true,
+            name: 'keep-alive'
+        }
+    }, {
+        path: '/keepalive',
+        name: 'keep-alive',
+        component: resolve => require(['../page/keep-alive/Keep-alive'], resolve),
+        meta: {
+            isShown: false,
+            keepAlive: true
+        }
+    }, {
+        path: '/keepnot',
+        name: 'keep-not',
+        component: resolve => require(['../page/keep-alive/Keep-not'], resolve),
+        meta: {
+            isShown: false,
+            keepAlive: false
+        }
     }]
 })
