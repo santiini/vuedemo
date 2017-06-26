@@ -92,5 +92,29 @@ export default new Router({
             isShown: false,
             keepAlive: false
         }
+    }, {
+        path: '/radio',
+        name: 'radio',
+        component: resolve => require(['../page/Radio'], resolve),
+        meta: {
+            isShown: true,
+            name: 'radio'
+        }
+    }, {
+        path: '/pointer',
+        name: 'pointer',
+        component: resolve => require(['../page/PointEvent'], resolve),
+        meta: {
+            isShown: true,
+            name: 'pointer-events'
+        }
+    }, {
+        path: '/checkbox',
+        name: 'checkbox',
+        component: resolve => require(['../page/Checkbox'], resolve),
+        meta: {
+            isShown: true,
+            name: 'checkbox'
+        }
     }]
 })
