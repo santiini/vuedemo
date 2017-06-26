@@ -33,7 +33,8 @@ let webpackConfig = {
             'utils': resolve('src/utils'),
             'api': resolve('src/api'),
             'components': resolve('src/components'),
-            'node': resolve('node_modules')
+            'node': resolve('node_modules'),
+            'lib': resolve('src/lib')
         }
     },
     module: {

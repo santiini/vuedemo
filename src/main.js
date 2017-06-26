@@ -12,7 +12,10 @@ import axios from './utils/axios.js';
 // import * as axios from './utils/axios.js';
 Vue.prototype.axios = axios;
 
-// plugins: vux插件;
+// 3. 全部css文件的引用;
+import './style/base.less';
+
+// 4.plugins: vux插件;
 import { LocalePlugin, DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, AppPlugin } from 'vux'
 Vue.use(DevicePlugin)
 Vue.use(ToastPlugin)
@@ -27,7 +30,8 @@ FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
-// router的钩子函数;
+
+// 5.router的钩子函数;
 router.beforeEach((to, from, next) => {
     // 1. 全局的x-header, 设置;
     next();

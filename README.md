@@ -20,7 +20,7 @@ npm run build --report
 
 ## 2017.6.6
 
-#### vux2.2 学习配合上 node 8.0
+### vux2.2 学习配合上 node 8.0
 
 > 问题反馈，解决的问题
 
@@ -69,7 +69,12 @@ npm run build --report
 
 ```
 
+## 组件学习
 
+<<<<<<< HEAD
 ## 下一项：vue-ssr
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+### Radio组件添加 disabled
+>>>>>>> 43d0412253c4eedb765a41f0d7e6b86e1b2b9b13

@@ -4,7 +4,7 @@
     <grid :rows="3" >
       <grid-item
           v-for="(item, i) of menuList"
-          v-if="item.meta.isShown && item.meta.name"
+          v-if="item.meta && item.meta.isShown && item.meta.name"
           :key="i"
           :label="item.meta.name"
           :link="item.path"

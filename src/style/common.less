@@ -1,3 +1,5 @@
+// 在 .less文件中引用其他 .less文件， 可以省略.less;
+@import 'base';
 // 基础颜色;
 @color: #fff,
 blue,
@@ -30,26 +32,39 @@ red,
     background-position: center;
     background-size: contain;
 }
+// 有点像es6 的默认值设置, 推荐使用;
 .pd(@top: 10px, @right: @top, @bottom: @top, @left: @right) {
     padding-top: @top;
     padding-right: @right;
     padding-bottom: @bottom;
     padding-left: @left;
 }
+.mg(@top: 10px, @right: @top, @bottom: @top, @left: @right) {
+    margin-top: @top;
+    margin-right: @right;
+    margin-bottom: @bottom;
+    margin-left: @left;
+}
 //  1.传入属性名和属性值;
 //  @{name}: 字符串末班插值;
-.mg(@name, @px) {
+.mg1(@name, @px) {
    @{name}: @px;
 }
-.pd(@name, @px) {
+
+.pd1(@name, @px) {
   @{name}: @px;
 }
+
+
 .margin(@name, @px) {
   margin-@{name}: @px;
 }
+
+// 推荐使用;
 .padding(@name, @px) {
   padding-@{name}: @px;
 }
+
 .text-align(@align) {
   text-align: @align;
 }
