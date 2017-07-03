@@ -1,0 +1,57 @@
+// scss函数的声明;
+
+// 960网格布局;
+// 当前作用域的变量;
+$_columns: 12 !default;
+$_column-width: 60px !default;
+$_gutter: 20px !default;
+
+// 自定义函数;
+@function grid-width($n) {
+    @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+
+// 函数;
+@function get_width($_columns: $_columns, $onlyInnerWidth: true, $_subtract: 0) {
+    // 默认返回值;
+    $return: ($_column-width + $_gutter) * $_columns - $_subtract !default;
+
+    @if $onlyInnerWidth == true {
+        // 如果$onlyInnerWidth 为true，那么减掉一个间隔$_gutter
+        @return ($_column-width + $_gutter) * $_columns = $_gutter - $_subtract;
+    }
+    @return $return;
+}
+
+
+// column mixin
+@mixin column($columns: $_columns, $_subtract: 0, $_offset: false, $gutter: $_gutter) {
+    display: inline;
+    float: left;
+    $getWidth: get_width($columns, true, $_subtract);
+
+    @if $gutter != 0 {
+        @if $_offset == alpha {
+            margin-left: - ($gutter / 2);
+            margin-right: $gutter / 2;
+        }
+        @else if $_offset == a {
+            margin-right: ($gutter / 2);
+            margin-left: 0;
+        }
+        @else if $_offset == first {
+            margin-right: ($gutter / 2);
+            margin-left: 0;
+        }
+    }
+}
+
+// px转em
+@function pxToEm($px, $base:16) {
+    @return ($px / $base) * 1em;
+}
+
+
+
+
+

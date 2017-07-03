@@ -12,7 +12,8 @@ const header = {
             showBack: false
         },
         clickEvent: {},
-        isShown: false
+        isShown: true
+        // isShown: false
     },
 
     // mutations:
@@ -22,7 +23,7 @@ const header = {
             state.rightOption = rightOption || { showMore: false }
             state.leftOption = leftOption || { showBack: false }
                 // state.clickFunc = clickFunc
-            state.isShown = isShown
+            state.isShown = isShown || true
         }
     },
 

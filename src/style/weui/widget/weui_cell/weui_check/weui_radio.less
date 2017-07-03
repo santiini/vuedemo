@@ -1,0 +1,28 @@
+/**
+* radio: checked图标
+*/
+@import '../../../base/fn';
+
+.weui-cells_radio {
+    // weui-cell__ft 是checked 图标的容器载体;
+    .weui-cell__ft {
+        padding-left: @weuiCellInnerGapH;
+    }
+}
+
+// radio
+.weui-check {
+    .weui-cells_radio & {
+        // input[type="radio"] :checkecd 选中的radio的下一个兄弟元素 .weui-icon-checked ,展现形式是icon;
+        &:checked {
+            & + .weui-icon-checked {
+                &:before {
+                    display: block;
+                    content: '\EA08';
+                    color: @radio-checked-icon-color;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

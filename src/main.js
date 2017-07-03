@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import App from './App'
+import { sync } from 'vuex-router-sync';
 
 //1. 引入单独的router;
 import router from './router';
+import store from './store';
+sync(store, router);
 
 // 2. 全局的axios;
 import axios from './utils/axios.js';
@@ -42,6 +45,7 @@ router.beforeEach((to, from, next) => {
 
 const app = new Vue({
     router,
+    store,
     render: h => h(App),
     // // 事件处理器, eventHub;
     data() {

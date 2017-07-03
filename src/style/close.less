@@ -1,0 +1,27 @@
+/**
+* 代表关闭按钮的图标， 类似XDialog 中的close按钮;
+*/
+
+.vux-close {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+    width: 24px;
+    height: 24px;
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 24px;
+        height: 1px;
+        // currentColor: css变量 or css 关键字, currentColor代表了当前元素被应用上的color颜色值。 使用它可以将当前这个颜色值应用到其他属性上，或者嵌套元素的其他属性上。
+        background-color: currentColor;
+        transform: rotate(-45deg);
+    }
+    &:after {
+        transform: rotate(45deg);
+    }
+}

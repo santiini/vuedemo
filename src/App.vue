@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <x-header>keep-alive的测试</x-header>
+    <x-header v-show="header.isShown" :left-options="header.leftOption" :right-options="header.rightOption">{{header.title}}</x-header>
+    <!--<x-header>keep-alive的测试</x-header>-->
     <!--<router-view></router-view>-->
     <!--keep-alive的两种形式-->
 
@@ -18,11 +19,15 @@
 </template>
 
 <script>
-import { XHeader } from 'vux';
+import { XHeader } from 'vux'
+import { mapGetters } from 'vuex'
 export default {
   name: 'app',
   components: {
     XHeader
+  },
+  computed: {
+    ...mapGetters(['header'])
   }
 }
 </script>

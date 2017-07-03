@@ -1,0 +1,112 @@
+/**
+* sass的一些测试;
+*/
+
+// 变量声明 ；
+$lte7: true !default;
+// 1. % : 占位符选择器, 一种特殊类型的选择器;
+//  tips: 1.必须通过 @extend 指令调用;
+//        2.可以使用变量， 但是不能传递参数;
+//        3.相比较于@extend, #{} 不会生成占位符标示的选择器代码;
+// 清楚浮动的 各个浏览器版本;
+%clearfix {
+  @if $lte7 {
+    // IE浏览器的专有属性, 设置或检索对象的缩放比例, 其他： 触发ie的hasLayout属性，清除浮动、清除margin的重叠等。
+    *zoom: 1;
+  }
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+    font: 0 / 0 a;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// 相比较于原生的css, % 占位符可以产生少量的代码;
+%bg-blue {
+  background-color: blue;
+}
+
+
+$gray: #eee;
+$baseRadius: 4px;
+// 变量依次为：字体大小，边框颜色，focus时边框颜色，圆角大小
+$simpleFrom: 12px $gray #52a8ec $baseRadius !default;
+
+%simple-form-basic {
+  border: 1px solid nth($simpleFrom, 2);
+  padding: 4px;
+
+  @if not(unitless(nth($simpleFrom, 4))) {
+    border-radius: nth($simpleFrom, 4)
+  }
+  &:focus {
+    outline: 0 none;
+  }
+}
+
+%zoom {
+  @if $lte7 {
+    *zoom: 1;
+  }
+}
+
+@mixin float($float: left) {
+  float: $float;
+  @if $lte7 {
+    display: inline;
+  }
+}
+
+%float-right {
+  @include float(right);
+}
+
+
+
+// 2. #{}: 插值语句， 相当于less 中的 @{};
+// tips: 1.通过 #{} 插值语句可以在选择器或属性名中使用变量：
+// margin 和 padding;
+@mixin margin($top: 10px, $right: $top, $bottom: $top, $left: $right) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin mg($key, $value) {
+  margin-#{$key}: $value;
+}
+
+// ... 传参数：传入数量不定的参数，可以是： 1， 2， 3..., 类似es6的 ... 展开操作符;
+@mixin mgin($margin...) {
+  margin: $margin;
+}
+
+// @content 的使用;
+// @content的使用价值其实体现在css3的media-queries，animation的keyframes定义，还有为浏览器兼容的定义。
+// 原文: http://www.w3cplus.com/preprocessor/sass-mixins-function-placeholder.html
+// 1. 定义media-queries的最小最大宽度
+@mixin screen($res-min, $res-max) {
+  @media screen and ( min-width: $res-min ) and ( max-width: $res-max ) {
+    @content;
+  }
+}
+
+// 2. 定义animation的keyframes
+@mixin keyframe($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// 3.定义所有不支持圆角的浏览器使用背景图片
+// 得使用[modernizr](http://modernizr.com/)来检测，在html上加class
+@mixin no-border-radius {
+  .no-border-radius {
+    @content
+  }
+}

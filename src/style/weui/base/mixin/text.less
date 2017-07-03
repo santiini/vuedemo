@@ -1,0 +1,35 @@
+/**
+* text的一些处理: 1. 一行不换行，省略号； 2. 换行显示; 3. 单词内连字符连接单词;
+*/
+// 省略号;
+.ellipsis(@width:auto) {
+    width: @width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.ellipsisLn(@line) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;
+}
+
+.text_wrap() {
+    // word-wrap 属性允许长单词或 URL 地址换行到下一行。
+    // 1.normal -- 只在允许的断字点换行; 2.break-word -- 在长单词或 URL 地址内部进行换行.
+    word-wrap: break-word;
+    // word-break 属性规定自动换行的处理方法。
+    // 1.normal, 2.break-all -- 允许在单词内换行。3.keep-all -- 只能在半角空格或连字符处换行。
+    word-break: break-all;
+}
+
+// hyphens 告知浏览器在换行时如何使用连字符连接单词。
+.hyphens() {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

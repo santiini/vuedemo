@@ -14,7 +14,7 @@ export default function fetchData(options) {
       // 基础url前缀
       // tips: process.env区分了生产环境和开发环境的不同域名;
       // baseURL: process.env.BASE_API,
-      baseURL: 'http://cnpcportal.sinoapps.cn',
+      // baseURL: 'http://cnpcportal.sinoapps.cn',
       // timeout: 超时设置;
       timeout: 3000,
       headers: {
@@ -52,7 +52,7 @@ export default function fetchData(options) {
       .then(response => response.data)
       .then(result => {
         // 判断响应 --> 并进行统一性的处理;
-        if(result.code !== 0) {
+        if (result.code !== 0) {
           console.log(options);  // 调试;
           // 统一进行的错误处理;
 

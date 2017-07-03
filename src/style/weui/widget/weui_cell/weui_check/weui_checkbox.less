@@ -1,0 +1,33 @@
+/**
+* checkbox 的选中图标;
+*/
+@import '../../../base/fn';
+
+.weui-cells_checkbox {
+    .weui-cell__hd {
+        padding-right: @weuiCellInnerGapH;
+    }
+    // 未选中;
+    .weui-icon-checked {
+        &:before {
+            content: '\EA01';
+            color: #c9c9c9;
+            font-size: 23px;
+            display: block;
+        }
+    }
+}
+
+.weui-check {
+    // checkbox: 选中状态;
+    .weui-cells_checkbox & {
+        &:checked {
+            & + .weui-icon-checked {
+                &:before {
+                    content: '\EA06';
+                    color: #09BB07;
+                }
+            }
+        }
+    }
+}

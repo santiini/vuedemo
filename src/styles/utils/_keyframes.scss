@@ -1,0 +1,32 @@
+/**
+* sass中的keyframe 动画;
+*/
+
+// 不使用Autoprefixer 的mixin;
+@mixin keyframes($animationName) {
+    // 早期为了兼容各浏览器，需要添加各种前缀：
+    // #{}: 插值语句，类似es6 的 ``
+    @-webkit-keyframes #{$animationName} {
+        // @content 使用时可以传递css片段给 mixin, 相当于vue中的slot插槽;
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+// 配置Autoprefixer后;
+@mixin keyframes($animationName) {
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+
+// sass 自动化处理css动画;

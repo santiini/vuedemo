@@ -1,0 +1,80 @@
+/**
+* select 控件的css;
+*/
+@import '../../../base/fn';
+
+.weui-cell_select {
+    // select 组件cell的默认padding: 0;
+    padding: 0;
+    .weui-select {
+        // select 元素右侧: is-link类似的提示icon;
+        padding-right: 30px;
+    }
+    .weui-cell__bd{
+        // select 元素的container 的提示icon;
+        &:after{
+            // right-arrow 的css实现;
+            content: " ";
+            .setArrow(right, 6px, #C8C8CD, 2px);
+
+            // 绝对定位，icon位置：居中展示;
+            position: absolute;
+            top: 50%;
+            right: @weuiCellGapH;
+            margin-top: -4px;
+        }
+    }
+}
+
+// select 元素的css, border,outline取消，width:100%, height:
+.weui-select {
+    // appearance 属性允许您使元素看上去像标准的用户界面元素。
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: inherit;
+    // height, line-height: 保持和weui-cell 一样的高度;
+    height: @weuiCellHeight;
+    line-height: @weuiCellHeight;
+    position: relative;
+    z-index: 1;
+    padding-left: @weuiCellGapH;
+}
+
+.weui-cell_select-before {
+    padding-right:@weuiCellGapH;
+    .weui-select{
+        width:@weuiCellLabelWidth;
+        box-sizing: border-box;
+    }
+    .weui-cell__hd {
+        position:relative;
+        &:after {
+            .setRightLine(@weuiCellBorderColor);
+        }
+        &:before{
+            content: " ";
+            .setArrow(right, 6px, #C8C8CD, 2px);
+
+            position: absolute;
+            top: 50%;
+            right: @weuiCellGapH;
+            margin-top: -4px;
+        }
+    }
+    .weui-cell__bd {
+        padding-left:@weuiCellGapH;
+        &:after{
+            display:none;
+        }
+    }
+}
+
+.weui-cell_select-after {
+    padding-left:@weuiCellGapH;
+    .weui-select {
+        padding-left:0;
+    }
+}

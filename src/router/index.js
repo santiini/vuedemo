@@ -116,5 +116,13 @@ export default new Router({
             isShown: true,
             name: 'checkbox'
         }
+    }, {
+        path: '/sass',
+        name: 'sass',
+        component: resolve => require(['../page/Sass'], resolve),
+        meta: {
+            isShown: true,
+            name: 'sass'
+        }
     }]
 })

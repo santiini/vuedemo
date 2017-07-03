@@ -1,0 +1,19 @@
+/**
+* http://www.zhangxinxu.com/wordpress/2015/01/tips-blank-character-chinese-align/
+* &ensp, &emsp, &#x3000, 实现中文的空格对齐;
+* &ensp: 半个中文宽度, 对应的html识别格式 -- &#x2002；
+* &emsp: 一个中文宽度, 对应的html识别格式 -- &#x2003；
+* &#x3000: 全角空格，相对于 &emsp;
+* 优化： 利用伪元素， 例如：half:before { content: '\2002'; speak: none; }， .full:before { content: '\2003'; speak: none; }
+*/
+
+.vux-blank-half:before {
+    content: '\2002';
+    // 不会被声音识别；
+    speak: none;
+}
+
+.vux-blank-full:before {
+    content: '\2003';
+    speak: none;
+}

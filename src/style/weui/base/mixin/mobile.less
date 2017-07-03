@@ -1,0 +1,10 @@
+/**
+* 在移动端上，有事件监听的元素被点击的时候会被高亮显示，
+* 而-webkit-tap-highlight-color属性会在当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。
+*/
+
+// webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节
+// 该属性可以只设置透明度。如果未设置透明度，ios Safari使用默认的透明度。当透明度设为0，则会禁用此属性；当透明度设为1，元素在点击时不可见。
+.setTapColor(@c:rgba(0,0,0,0)) {
+    -webkit-tap-highlight-color: @c;
+}

@@ -1,0 +1,97 @@
+/**
+* form表单组件公共css;
+*/
+@import '../../../base/fn';
+
+// label元素;
+.weui-label {
+    display: block;
+    // cell 组件中lable的一般width;
+    width: @weuiCellLabelWidth;
+    // 文字换行;
+    .text_wrap();
+}
+
+// 输入框;
+.weui-input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: inherit;
+    color: inherit;
+    // unit(Number, px/ex): 函数会把 数字和单位结合在一起，作为值;
+    height: unit(@weuiCellLineHeight, em);
+    line-height: @weuiCellLineHeight;
+
+    // hides the spin-button
+    // -webkit-inner-spin-button: 控制input[type="date"]中的上下小箭头;
+    // ::-webkit-outer-spin-button: 控制input[type="number"]中的上下小箭头;
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{
+        -webkit-appearance: none;  // 上下小箭头， 使之不可见;
+        margin: 0;
+    }
+}
+
+// 文本域输入框;
+.weui-textarea {
+    display: block;
+    border: 0;
+    resize: none;
+    width: 100%;
+    color: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    // 输入时的轮廓;
+    outline: 0;
+}
+
+// textarea 的计数器;
+.weui-textarea-counter{
+    color: @weuiTextColorTips;
+    text-align: right;
+    .weui-cell_warn &{
+        color: @weuiTextColorWarn;
+    }
+}
+
+.weui-toptips {
+    display:none;
+    position: fixed;
+    transform: translateZ(0);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding:5px;
+    font-size:14px;
+    text-align: center;
+    color: #FFF;
+    z-index: 5000;
+    .text_wrap();
+}
+.weui-toptips_warn {
+    background-color: @weuiColorWarn;
+}
+
+// form元素
+.weui-cells_form {
+    // weui-cell__ft 一般用来展示图标，图片;
+    .weui-cell__ft{
+        font-size:0;
+    }
+    // icon 图标，warn是错误展示的icon;
+    .weui-icon-warn{
+        display:none;
+    }
+    // 点击高亮色;
+    input, textarea, label[for]{
+        .setTapColor();
+    }
+}
+// 错误提醒的icon
+.weui-cell_warn{
+    // 当验证出错时， 改变weui-cell 组件中的字体颜色, 使icon-warn 图标可见;
+    color:@weuiTextColorWarn;
+    .weui-icon-warn{display:inline-block;}
+}

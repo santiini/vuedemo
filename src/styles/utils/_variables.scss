@@ -1,0 +1,15 @@
+// scss中的变量声明;
+
+// colors;
+$white: #fff;
+$black: #000;
+$grey: #eee;
+$red: red;
+// 默认变量值：!default, 如果这个变量被声明赋值了，那就用它声明的值，否则就用这个默认值。
+$blue: blue !default;
+
+
+// fontSize;
+$fs-16: 16px;
+$fs-14: 14px;
+$fs-18: 18px;

@@ -1,0 +1,64 @@
+/*
+* 1px 方案在 VUX 组件内应用广泛，包括 Grid, ButtonTab, XTable, XButton, Cell 等等。
+* 在你项目的`App.vue`引入，组件内不需要再重复引入。
+* 可用类名：`vux-1px-l` 左边框，`vux-1px-r` 右边框，`vux-1px-t` 上边框，`vux-1px-b` 下边框，`vux-1px-tb` 上下边框，`vux-1px` 全边框
+*/
+@import './weui/base/mixin/setOnePx.less';
+
+.setLine(@color:#c7c7c7) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 1px;
+    border: 1px solid @color;
+    color: @color;
+    height: 200%;
+    tranform-origin: left top;
+    transform: scale(0.5);
+}
+
+// 元素自身需要的定位， position: relative;
+.vux-1px, .vux-1px-t, .vux-1px-b, .vux-1px-l, .vux-1px-r {
+    position: relative;
+}
+
+.vux-1px {
+    &:before {
+        .setLine();
+    }
+}
+
+.vux-1px-t {
+    &:before {
+        .setTopLine();
+    }
+}
+
+.vux-1px-b {
+    &:after {
+        .setBottomLine();
+    }
+}
+
+.vux-1px-tb {
+    &:before {
+        .setTopLine();
+    }
+    &:after {
+        .setBottomLine();
+    }
+}
+
+.vux-1px-l {
+    &:before {
+        .setLeftLine();
+    }
+}
+
+.vux-1px-r {
+    &:after {
+        .setRightLine();
+    }
+}

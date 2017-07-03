@@ -1,0 +1,18 @@
+/**
+* check项： radio,checkbox 的公共css;
+*/
+@import '../../../base/fn';
+
+.weui-check__label {
+    // -webkit-tap-highlight-color, tap高亮色;
+    .setTapColor();
+    &:active {
+        background-color: #ECECEC;
+    }
+}
+
+// input type="radio" type="checkbox" 元素的实体，css使之不可见;
+.weui-check {
+    position: absolute;
+    left: -9999em;
+}
