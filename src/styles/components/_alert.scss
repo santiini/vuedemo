@@ -1,0 +1,68 @@
+//  alert
+//  ---------------------
+
+$alert-height	: 36px !default;
+$alert-bg 		: #dae5e5 !default;
+$success-bg 	: #d5efbf !default;
+$error-bg 		: #f9d6d6 !default;
+$warning-bg		: #f9ebb2 !default;
+
+
+//  <div class="alert--success">
+//    <span class="icon--..."></span>
+//  </div>
+
+
+[class^="alert--"] {
+	display: inline-block;
+	position: relative;
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	color: rgb(50,50,50);
+	color: rgba(0,0,0,0.8);
+	background-color: $alert-bg;
+	vertical-align: middle;
+	@include border-radius($alert-height);
+}
+
+
+[class^="alert--"]:after, [class^="alert--"]:before {
+	bottom: 100%;
+	left: 20%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+[class^="alert--"]:after {
+	border-bottom-color: $alert-bg;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+
+
+.alert--success {
+	background-color: $success-bg;
+	color: darken($success-bg, 90);
+	&:after {
+		border-bottom-color: $success-bg;
+	}
+}
+.alert--warning {
+	background-color: $warning-bg;
+	color: darken($warning-bg, 90);
+	&:after {
+		border-bottom-color: $warning-bg;
+	}
+}
+.alert--error {
+	background: $error-bg;
+	color: white;
+	&:after {
+		border-bottom-color: $error-bg;
+	}
+}

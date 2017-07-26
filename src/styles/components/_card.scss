@@ -1,0 +1,61 @@
+//  card
+//  ---------------------
+
+.cards {
+	@extend %clearfix;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.card {
+	float: left;
+	width: 100%;
+	max-width: 480px;
+
+	margin-bottom: 1em;
+
+	background-color: $white;
+	color: $grey;
+	@include single-box-shadow(0, 3px, 6px, 0, black(.15));
+
+	@include transition(all 300ms ease-out);
+
+	text-align: center;
+
+	.card-image {
+		display: table;
+		width: 100%;
+		overflow: hidden;
+		background: #444;
+		color: #999;
+		min-height: 240px;
+		text-align: center;
+	}
+
+	.card-logo {
+		display: table-cell;
+		max-width: 100%;
+		vertical-align: middle;
+		font-size: 36px;
+	}
+
+	.card-caption {
+		padding: 1em 2em;
+	}
+
+	.card-action {
+		padding: 1em;
+		clear: both;
+		border-top: solid 1px #eee;
+		a {
+			padding-right: 12px;
+			padding-left: 12px;
+			margin: 0 12px;
+		}
+	}
+}
+
+.card + .card {
+	margin-left: 1em;
+}

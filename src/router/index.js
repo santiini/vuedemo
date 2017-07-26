@@ -124,5 +124,42 @@ export default new Router({
             isShown: true,
             name: 'sass'
         }
-    }]
+    }, {
+        path: '/globalsass',
+        name: 'global-sass',
+        component: resolve => require(['../page/GlobalSass'], resolve),
+        meta: {
+          isShown: false
+        }
+    }, {
+      path: '/mock',
+      name: 'mock',
+      component: resolve => require(['page/Mock'], resolve),
+      meta: {
+        isShown: true,
+        name: 'mock'
+      }
+    }, {
+      path: '/eventHub',
+      name: 'eventHub',
+      component: resolve => require(['page/EventHub'], resolve),
+      meta: {
+        isShown: true,
+        name: 'eventHub',
+        keepAlive: true
+      }
+    },{
+      path: '/event-child',
+      name: 'eventhub-child',
+      component: resolve => require(['page/EventHub/child'], resolve)
+    }, {
+      path: '/inheritAttrs',
+      name: 'inheritAttr',
+      component: resolve => require(['page/inheritAttrs'], resolve),
+      meta: {
+        isShown: true,
+        name: 'inheritAttrs'
+      }
+    },
+  ]
 })

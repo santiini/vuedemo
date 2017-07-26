@@ -13,6 +13,20 @@ function getImage(url) {
     return domain + url;
 }
 
+/**
+ * mock模拟请求时，获取url中参数的方法;
+ * @param {any} url
+ * @returns
+ */
+function param2Obj(url) {
+   const search = url.split('?')[1];
+   if (!search) {
+     return {}
+   }
+   return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+ }
+
 export {
-    getImage
+    getImage,
+    param2Obj
 }

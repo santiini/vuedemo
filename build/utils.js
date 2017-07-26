@@ -44,13 +44,53 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  // 为了sass文件的全局引用和使用;
+  function resolveResouce(name) {
+      return path.resolve(__dirname, '../src/sass/' + name);
+      // return path.resolve(__dirname, '../src/styles/' + name);
+  }
+  function generateSassResourceLoader() {
+    var loaders = [
+      cssLoader,
+      'postcss-loader',
+      'sass-loader',
+      {
+        loader: 'sass-resources-loader',
+        options: {
+          // it need a absolute path
+          // tips: 1。main.scss 的结构太复杂，需要理清之后，把变量，mixins提出来以供使用；
+            // 2. main.scss 中的文件引入方式在这里的解析有问题;
+            // 3. 问题： 不能在引入的文件中 @import '_mixins.scss' 引用其他文件，这里会报错;
+          // resources: [resolveResouce('_variables.scss'), resolveResouce('_mixins.scss'), resolveResouce('_helpers.scss')]
+          // resources: [resolveResouce('main.scss')]
+          resources: [resolveResouce('var.scss'), resolveResouce('mixins.scss')]
+        }
+      }
+    ];
+
+    // 返回sass-loader的处理依赖数组;
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader'
+      })
+    } else {
+      return ['vue-style-loader'].concat(loaders)
+    }
+
+  }
+
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    // sass: generateLoaders('sass', { indentedSyntax: true }),
+    // scss: generateLoaders(['sass?data=@import "../src/styles/main.scss";']),  // 不能使用;
+    // scss: generateLoaders('sass'),
+    // 用信息的函数生成的loaders 解析sass,scss;
+    sass: generateSassResourceLoader(),
+    scss: generateSassResourceLoader(),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }

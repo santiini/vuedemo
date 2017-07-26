@@ -1,91 +1,91 @@
 // mixins 的声明;
 // 1. 无参数mixins;
 @mixin vux-close {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  color: #999;
-  width: 24px;
-  height: 24px;
-  &:before,
-  &:after {
-    content: " ";
-    position: absolute;
-    left: 0;
-    top: 11px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
     width: 24px;
-    height: 1px; // background-color: #eee;
-    // currentColor: css变量 or css 关键字, currentColor代表了当前元素被应用上的color颜色值。 
-    // 使用它可以将当前这个颜色值应用到其他属性上，或者嵌套元素的其他属性上。
-    background-color: currentColor;
-    transform: rotate(-45deg);
-  }
-  &:after {
-    transform: rotate(45deg);
-  }
+    height: 24px;
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 24px;
+        height: 1px; // background-color: #eee;
+        // currentColor: css变量 or css 关键字, currentColor代表了当前元素被应用上的color颜色值。
+        // 使用它可以将当前这个颜色值应用到其他属性上，或者嵌套元素的其他属性上。
+        background-color: currentColor;
+        transform: rotate(-45deg);
+    }
+    &:after {
+        transform: rotate(45deg);
+    }
 }
 
 // 2. 传参数的mixin --- 箭头icon;
 // tips: 1.传参数形式：键值对, $name: value;  2. 默认参数值;
 @mixin _setArrow($arrowsize, $borderColor, $borderWidth) {
-  display: inline-block;
-  height: $arrowsize;
-  width: $arrowsize;
-  border-width: $borderWidth $borderWidth 0 0;
-  border-style: $borderColor;
-  border-style: solid;
+    display: inline-block;
+    height: $arrowsize;
+    width: $arrowsize;
+    border-width: $borderWidth $borderWidth 0 0;
+    border-style: $borderColor;
+    border-style: solid;
 }
 
 // 有判断条件的 mixin, 利用指令，@if, @else if, @else;
 // tips: 有默认值的参数$direction 这里要放到函数参数的最后位置;
 @mixin setArrow($arrowsize, $borderColor, $borderWidth, $direction: bottom) {
-  @include _setArrow($arrowsize, $borderColor, $borderWidth); // @if, @else if, @else: 判断参数实现不同的输出;
-  // tips: scss 中， == ，!== 分别对应着 等于，不等于;
-  @if $direction==top {
-    transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0); // rotate(-45deg)
-  }
-  @else if ($direction==right) {
-    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0); // rotate(45deg);
-    position: relative;
-    top: -2px;
-  }
-  @else if ($direction==left) {
-    transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0); // rotate(-135deg);
-    position: relative;
-    top: -2px;
-  }
-  @else if($direction==bottom) {
-    transform: matrix(-0.71, 0.71, -0.71, -0.71, 0, 0); // rotate(135deg);
-    position: relative;
-    top: -3px;
-  }
+    @include _setArrow($arrowsize, $borderColor, $borderWidth); // @if, @else if, @else: 判断参数实现不同的输出;
+    // tips: scss 中， == ，!== 分别对应着 等于，不等于;
+    @if $direction==top {
+        transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0); // rotate(-45deg)
+    }
+    @else if ($direction==right) {
+        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0); // rotate(45deg);
+        position: relative;
+        top: -2px;
+    }
+    @else if ($direction==left) {
+        transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0); // rotate(-135deg);
+        position: relative;
+        top: -2px;
+    }
+    @else if($direction==bottom) {
+        transform: matrix(-0.71, 0.71, -0.71, -0.71, 0, 0); // rotate(135deg);
+        position: relative;
+        top: -3px;
+    }
 }
 
 // 生成三角形 -- triangle;
 @mixin triangle($direction, $size, $borderColor) {
-  content: "";
-  height: 0;
-  width: 0;
-  @if ($direction==top) {
-    border-bottom: $size solid $borderColor;
-    border-left: $size dashed transparent;
-    border-right: $size dashed transparent;
-  }
-  @else if $direction==right {
-    border-left: $size solid $borderColor;
-    border-top: $size dashed transparent;
-    border-bottom: $size dashed transparent;
-  }
-  @else if $direction==bottom {
-    border-top: $size solid $borderColor;
-    border-left: $size dashed transparent;
-    border-right: $size dashed transparent;
-  }
-  @else if $direction==left {
-    border-right: $size solid $borderColor;
-    border-top: $size dashed transparent;
-    border-bottom: $size dashed transparent;
-  }
+    content: "";
+    height: 0;
+    width: 0;
+    @if ($direction==top) {
+        border-bottom: $size solid $borderColor;
+        border-left: $size dashed transparent;
+        border-right: $size dashed transparent;
+    }
+    @else if $direction==right {
+        border-left: $size solid $borderColor;
+        border-top: $size dashed transparent;
+        border-bottom: $size dashed transparent;
+    }
+    @else if $direction==bottom {
+        border-top: $size solid $borderColor;
+        border-left: $size dashed transparent;
+        border-right: $size dashed transparent;
+    }
+    @else if $direction==left {
+        border-right: $size solid $borderColor;
+        border-top: $size dashed transparent;
+        border-bottom: $size dashed transparent;
+    }
 }
 
 // 是否支持某个浏览器的前缀，如果你不想支持，可以设置为false
@@ -94,68 +94,67 @@ $prefix-for-mozilla: true !default;
 $prefix-for-microsoft: true !default;
 $prefix-for-opera: true !default;
 $prefix-for-spec: true !default;
-// prefixer 
-//---------------------------- 
+// prefixer
+//----------------------------
 @mixin prefixer ($property, $value, $prefixes) {
-  @each $prefix in $prefixes {
-    @if $prefix==webkit and $prefix-for-webkit==true {
-      -webkit-#{$property}: $value;
+    @each $prefix in $prefixes {
+        @if $prefix==webkit and $prefix-for-webkit==true {
+            -webkit-#{$property}: $value;
+        }
+        @else if $prefix==moz and $prefix-for-mozilla==true {
+            -moz-#{$property}: $value;
+        }
+        @else if $prefix==ms and $prefix-for-microsoft==true {
+            -ms-#{$property}: $value;
+        }
+        @else if $prefix==o and $prefix-for-opera==true {
+            -o-#{$property}: $value;
+        }
+        @else if $prefix==spec and $prefix-for-spec==true {
+            #{$property}: $value;
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
     }
-    @else if $prefix==moz and $prefix-for-mozilla==true {
-      -moz-#{$property}: $value;
-    }
-    @else if $prefix==ms and $prefix-for-microsoft==true {
-      -ms-#{$property}: $value;
-    }
-    @else if $prefix==o and $prefix-for-opera==true {
-      -o-#{$property}: $value;
-    }
-    @else if $prefix==spec and $prefix-for-spec==true {
-      #{$property}: $value;
-    }
-    @else {
-      @warn "Unrecognized prefix: #{$prefix}";
-    }
-  }
 }
 
 // 基于上面的拓展：
-//webki和标准 
+//webki和标准
 @mixin box-shadow($shadow...) {
-  @include prefixer(box-shadow, $shadow, webkit spec);
+    @include prefixer(box-shadow, $shadow, webkit spec);
 }
 
-//webkit moz 和标准 
+//webkit moz 和标准
 @mixin box-sizing($type:border-box) {
-  // border-box | padding-box | content-box 
-  @include prefixer(box-sizing, $type, webkit moz spec);
+    // border-box | padding-box | content-box
+    @include prefixer(box-sizing, $type, webkit moz spec);
 }
 
-//webkit moz o 和标准 
+//webkit moz o 和标准
 @mixin transform($property...) {
-  @include prefixer(transform, $property, webkit moz o spec);
+    @include prefixer(transform, $property, webkit moz o spec);
 }
-
 
 // 没有什么用，学习语法;
-//设置宽高，默认为auto 
+//设置宽高，默认为auto
 @mixin size($size...) {
-  // 三元操作符， 相当于js中的 a > b ? a : b;
-  $size: if(length($size) > 0, $size, auto);
-  // nth($vars, index): 去变量第index 位置的值;
-  // length($var)表示获取变量的长度，
-  $width: nth($size, 1);
-  $height: nth($size, length($size));
-  @if $width !=auto {
-    // unitless判断是否无单位，
-    // if(unitless($width), $width + px, $width),  三元操作符;
-    $width: if(unitless($width), $width + px, $width);
-  }
-  @if $height !=auto {
-    $height: if(unitless($height), $height + px, $height);
-  }
-  width: $width;
-  height: $height;
+    // 三元操作符， 相当于js中的 a > b ? a : b;
+    $size: if(length($size) > 0, $size, auto);
+    // nth($vars, index): 去变量第index 位置的值;
+    // length($var)表示获取变量的长度，
+    $width: nth($size, 1);
+    $height: nth($size, length($size));
+    @if $width !=auto {
+        // unitless判断是否无单位，
+        // if(unitless($width), $width + px, $width),  三元操作符;
+        $width: if(unitless($width), $width + px, $width);
+    }
+    @if $height !=auto {
+        $height: if(unitless($height), $height + px, $height);
+    }
+    width: $width;
+    height: $height;
 }
 
 // sass的运算： 所有数据类型都支持 ==, !==;
@@ -165,10 +164,10 @@ $prefix-for-spec: true !default;
 // 4. 布尔运算: SassScript 支持布尔型的 and or 以及 not 运算。
 @mixin switchcolor($type) {
     // 布尔值运算：
-    @if ($type == 1 or $type == 2) {
+    @if ($type==1 or $type==2) {
         color: red
     }
-    @else if ($type == 3 or $type == 4) {
+    @else if ($type==3 or $type==4) {
         color: blue;
     }
     @else {
@@ -176,10 +175,10 @@ $prefix-for-spec: true !default;
     }
 }
 
-// sass数组运算：List Functions；数组运算; 
+// sass数组运算：List Functions；数组运算;
 // tips: https://www.sass.hk/docs/  or  http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions;
 // 1. index($list, $value), 判断数组list  是否有value值;
-@mixin  typecolor($type) {
+@mixin typecolor($type) {
     @if (index(red blue yellow, $type)) {
         color: red;
         font-size: 18px;
@@ -188,4 +187,178 @@ $prefix-for-spec: true !default;
         color: green;
         font-size: 14px;
     }
+}
+
+// Border Radius
+// 不建议使用
+//-----------------------------------------------------
+@mixin border-radius($radius: $baseRadius) {
+    // @include prefixer(border-radius, $radius, webkit);
+    border-radius: $radius;
+}
+
+// 推荐8个sass mixins；
+// 1、使用rem设置字体尺寸并使用像素进行回退
+// 由于在IE8及以下版本的IE浏览器中不支持rem属性，因此我们必须在这些浏览器中使用像素为单位来创建回退代码。
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+// 2、Breakpoints
+// Sass 3.2开始允许开发者在使用媒体查询（media queries）时使用定义的名称
+@mixin bp-large {
+    @media only screen and (max-width: 60em) {
+        @content;
+    }
+}
+
+@mixin bp-medium {
+    @media only screen and (max-width: 40em) {
+        @content;
+    }
+}
+
+@mixin bp-small {
+    @media only screen and (max-width: 30em) {
+        @content;
+    }
+}
+
+// 3、SVG背景图片及PNG和retina回退
+// 这个mixin依赖于Modernizr，在你在页面上创建图片的时候添加一些额外的代码。
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false) {
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size) {
+        background-size: $size;
+    }
+    .no-svg & {
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+            background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+
+// 4、Animations 和 keyframes
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+// 5、Transitions
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// 6、跨浏览器的透明度设置
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// 7、清除浮动（Clearfix）
+// %clearfix {
+//   *zoom: 1;
+//   &:before, &:after {
+//     content: " ";
+//     display: table;
+//   }
+//   &:after {
+//     clear: both;
+//   }
+// }
+// 8、隐藏元素
+// 当你使用display: none来隐藏一个元素的时候，屏幕阅读设备还是会将这个元素读出来。有时候这不是我们想要的结果。我们需要另一种方法来隐藏元素。
+%visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+// 9.使任何元素垂直居中
+
+/* Mixin */
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+// 透明度opacity
+@mixin opacity($opacity:50) {
+    opacity: $opacity / 100;
+    @if $filter {
+        filter: alpha(opacity=$opacity);
+    }
+}
+
+// 禁用样式disabled
+@mixin disabled($bgColor: #e6e6e6, $textColor:#ababab) {
+    background-color: $bgColor !important;
+    color: $textColor !important;
+    cursor: not-allowed !important;
+}
+
+// 最小高度min-height
+// min-height最小高度，主要用来设置元素的最小高度。当元素内容撑不到所需高度时，就可以使用min-height轻松实现。
+@mixin min-height($height) {
+    min-height: $height;
+    height: auto !important;
+    @if $legacy-support-for-ie {
+        _height: $height;
+    }
+}
+
+// box-shadow
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+@mixin single-box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
 }

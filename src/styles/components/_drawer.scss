@@ -1,0 +1,81 @@
+//  drawer
+//  ---------------------
+
+$drawer-bg				: $alt-page-bg !default;
+$drawer-color			: $page-color !default;
+$drawer-hd-bg			: $drawer-bg !default;
+$drawer-hd-color		: $link-color !default;
+$drawer-hd-line-height	: 24px !default;
+
+$drawer-border-width	: 1px !default;
+$drawer-border-style	: solid !default;
+$drawer-border-color	: $border-color !default;
+
+
+.trigger-drawer {
+	float: left;
+	padding: 0;
+	margin-right: 1em;
+}
+
+.drawer {
+	position: relative;
+	clear: both;
+	margin-bottom: 1.5em;
+	background-color: $drawer-bg;
+	color: $drawer-color;
+	text-align: left;
+
+	&.is-drawer-open {
+		.icon--arrow {
+			background-position: -148px -53px;
+		}
+	}
+
+}
+
+.drawer-hd {
+	@extend %clearfix;
+	display: block;
+	padding: .5em 1em;
+	line-height: $drawer-hd-line-height;
+	cursor: pointer;
+	background-color: $drawer-hd-bg;
+	color: $drawer-hd-color;
+	border: $drawer-border-width $drawer-border-style $drawer-border-color;
+}
+
+.drawer-title {
+	line-height: $drawer-hd-line-height;
+	margin-bottom: 0;
+	overflow: hidden;
+	span[class^="icon"] {
+		vertical-align: baseline;
+	}
+}
+
+.is-drawer-open span[class^="icon-arrow_down"] {
+	@include transform(rotate(360));
+}
+
+.drawer-bd {
+	width: 100%;
+	background-color: $drawer-bg;
+	padding: .5em 1.5em;
+	border: $drawer-border-width $drawer-border-style $drawer-border-color;
+	border-top: 0;
+	overflow: hidden;
+
+	.is-drawer-closed & {
+		display: none;
+	}
+
+	.drawer--overlay & {
+		position: absolute;
+	}
+
+	.drawer--inline & {
+		position: relative;
+	}
+
+}

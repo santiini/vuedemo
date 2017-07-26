@@ -1,0 +1,222 @@
+//  forms
+//  ---------------------
+
+$form-input-bg 				: $white !default;
+$form-input-color 			: $black !default;
+$form-placeholder-color 	: rgba(130, 130, 130, 0.35) !default;
+
+$form-input-border-width	: 1px !default;
+$form-input-border-style	: solid !default;
+$form-input-border-color 	: $border-color !default;
+
+
+// general resets
+//////////////////////////////
+
+form {
+	display: block;
+	margin-bottom: 1.5em;
+}
+
+fieldset {
+	padding: $gutterwidth 0;
+	border: 0;
+}
+
+button,
+input,
+label,
+select,
+textarea {
+	font-size: 1em;
+	font-weight: normal;
+}
+input[type="checkbox"] {
+	-webkit-appearance: checkbox !important;
+}
+button,
+input,
+select,
+textarea {
+	font-family: $base-font;
+}
+
+input,
+select,
+textarea {
+	margin-left: 0;
+	padding: 1em;
+	background-color: $form-input-bg;
+	color: $form-input-color;
+	border: $form-input-border-width $form-input-border-style $form-input-border-color;
+	@include border-radius();
+}
+
+
+// wrap all label-input/select/textarea pairs into a .control-group for spacing
+.control-group {
+	position: relative;
+	margin-bottom: 1em;
+}
+
+input,
+textarea {
+	width: 100%;
+	border-top-color: darken($form-input-border-color, 20);
+}
+
+textarea {
+	height: auto;
+	line-height: 1.5;
+}
+
+select {
+	height: 2.25em;
+	padding: 0.5em 1.5rem 0.5em 0.5em;
+}
+
+label {
+	display: block;
+	padding: 0.2em 0.5em 0;
+	margin: 0;
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #999;
+}
+
+.label--centered {
+	display: block;
+	text-align: center;
+}
+
+input[type="checkbox"] {
+	width: auto;
+	margin: 3px 5px 0 0;
+	line-height: normal;
+	cursor: pointer;
+}
+
+input[disabled="disabled"], input[disabled], select[disabled="disabled"] {
+	color: #999;
+	background-color: #eee;
+	cursor: not-allowed;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+::-webkit-input-placeholder {
+   color: $form-placeholder-color;
+   font-style: italic;
+   text-transform: none;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $form-placeholder-color;
+   font-style: italic;
+   text-transform: none;
+}
+:-ms-input-placeholder {
+   color: $form-placeholder-color;
+   font-style: italic;
+   text-transform: none;
+}
+
+
+// focus styles
+textarea:focus,
+input:focus {
+	outline: 0;
+}
+
+select:focus,
+input[type="checkbox"]:focus {
+	outline: thin dotted $form-input-border-color;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+.checkbox {
+	min-height: 18px;
+	padding-left: 18px;
+}
+.checkbox input[type="checkbox"] {
+	float: left;
+	margin-left: -18px;
+}
+
+// fit to width (use with grid)
+.input--fluid {
+	width: 100%;
+	max-width: 100%;
+}
+
+
+// tappable radios and checkboxes
+label.checkbox {
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+	@include border-radius();
+
+	span {
+		display: inline-block;
+		line-height: 42px;
+		padding: 0 10px;
+		padding-left: 30px;
+		min-height: 36px;
+		line-height: 36px;
+		@include border-radius();
+	}
+
+	+ label.checkbox {
+		margin-left: 1em;
+	}
+
+}
+
+.checkbox input[type="checkbox"] {
+	float: none; //override default
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	font-size: 1em;
+	margin-top: -0.5em;
+	margin-left: 0; //override default
+	background: transparent;
+
+	// active state
+	&:checked + span {
+		color: #3D8231;
+	}
+
+}
+
+
+// form errors
+//////////////////////////////
+.input--error, .has-errors input {
+	border-bottom-color: #d00;
+}
+
+.radio-group-label--error, .checkbox-group-label--error {
+	color: #d00;
+}
+
+.help--block {
+	display: block;
+
+	button + & {
+		margin-top: 0.5em;
+	}
+}
+
+.help--inline {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.help--error {
+	color: #d00;
+}

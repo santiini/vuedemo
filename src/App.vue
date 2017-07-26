@@ -9,7 +9,7 @@
     <!--<keep-alive include="keep-alive,keep">
       <router-view></router-view>
     </keep-alive>-->
-    
+
     <!--2.keep-alive 结合 v-if和 route.meta的判断, 适用于复杂项目-->
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"></router-view>

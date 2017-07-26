@@ -1,0 +1,16 @@
+//  callout
+//  ---------------------
+
+$callout-padding		: 2em !default;
+$callout-bg				: #fff !default;
+
+
+%callout {
+	padding: $callout-padding;
+	@extend %clearfix;
+	background: $callout-bg;
+}
+
+.callout {
+	@extend %callout;
+}

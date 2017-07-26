@@ -1,0 +1,27 @@
+// partials总的base:  方便组件内的scss而使用的变量等;
+
+// Use Compass ('cause it rocks!)
+// @import "compass";
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Base Fount
+$base-font-family: sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 13px;
+$base-font-height: 1.4;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Headings
+$header-font-weight: $bold;
+
+
+// 把all.scss 在最后引入：使partials的变量优先声明，all.scss的变量可以使用： !default;
+@import '../modules/_all';

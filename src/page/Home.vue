@@ -2,7 +2,13 @@
   <div>
     <!--<x-header :left-options="{showBack: false}">主页</x-header>-->
     <grid :rows="3">
-      <grid-item v-for="(item, i) of menuList" v-if="item.meta && item.meta.isShown && item.meta.name" :key="i" :label="item.meta.name" :link="item.path">
+      <grid-item
+        v-for="(item, i) of menuList"
+        v-if="item.meta && item.meta.isShown && item.meta.name"
+        :key="i"
+        :label="item.meta.name"
+        :link="item.path"
+      >
         <img slot="icon" :src="require('assets/grid_icon.png')">
       </grid-item>
     </grid>

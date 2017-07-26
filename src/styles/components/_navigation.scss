@@ -1,0 +1,34 @@
+//  navigation
+//  ---------------------
+
+$nav-link-padding: .5em 1em !default;
+
+nav, %nav {
+	@include clearfix;
+
+	> a {
+		text-align: left;
+		display: inline-block;
+		padding: $nav-link-padding;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:active, &:focus {
+			text-decoration: none;
+			outline: 0;
+			background-color : rgba(0,0,0,0.1);
+		}
+
+	}
+}
+
+.nav--stacked {
+	@extend %nav;
+
+	> a {
+		display: block;
+	}
+}

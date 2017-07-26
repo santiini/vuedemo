@@ -63,7 +63,36 @@ let webpackConfig = {
                     limit: 10000,
                     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
-            }
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    // 解析 .vue中的script;
+                    appendTsSuffixTo: [/\.vue$/],
+                }
+            },
+              // 支持全局引用scss文件;
+            // {
+            //     test: /\.scss$/,
+            //     use: [
+            //         'style-loader',
+            //         'css-loader',
+            //         'postcss-loader',
+            //         'sass-loader',
+            //         {
+            //             loader: 'sass-resources-loader',
+            //             options: {
+            //                 // Provide path to the file with resources
+            //                 resources: '../src/styles/main.scss',
+
+            //                 // Or array of paths
+            //                 // resources: ['./path/to/vars.scss', './path/to/mixins.scss']
+            //             },
+            //         },
+            //     ],
+            // },
         ]
     }
 }

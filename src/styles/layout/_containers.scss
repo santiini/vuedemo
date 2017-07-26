@@ -1,0 +1,70 @@
+////////////////////////////////////
+// CONTAINERS
+////////////////////////////////////
+
+// default variables
+
+$page-border-right	: 0 !default;
+$page-border-left	: 0 !default;
+
+// pg-container pseudo-class is an alternate hook for js if needed
+#pg-container:after {
+	content: "lt600";
+	display: none;
+}
+
+.container {
+	@extend %clearfix;
+	position: relative;
+	width: auto;
+	padding-bottom: 2rem;
+	border-right: $page-border-right;
+	border-left: $page-border-left;
+	background-color: $page-bg;
+	color: $page-color;
+}
+
+@include respond-min($breakpoint-xs) {
+	#pg-container:after {
+		content: "gt600";
+	}
+}
+
+
+@include respond-min($breakpoint-small) {
+
+	#pg-container:after {
+		content: "gt768";
+	}
+
+	.container:before, .container:after {
+		line-height: 0;
+	}
+
+}
+
+@include respond-min($breakpoint-medium) {
+
+	// sticky footer
+	.container {
+		min-height: 100%;
+		// equal to footer height
+		margin-bottom: -$footer-height;
+		&:after {
+			content: "";
+			display: block;
+		}
+	}
+	.container:after,
+	footer[role="contentinfo"] {
+	  // must be the same height as footer
+	  height: $footer-height;
+	}
+
+}
+
+@include respond-min($breakpoint-xl) {
+	#pg-container:after {
+		content: "gt1280";
+	}
+}

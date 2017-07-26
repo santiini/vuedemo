@@ -16,7 +16,14 @@ import axios from './utils/axios.js';
 Vue.prototype.axios = axios;
 
 // 3. 全部css文件的引用;
-import './style/base.less';
+// less: less文件全局引入后，组件仍然需要单独引入，因为less中的变量和mixins 等在组件内不能直接使用;
+// import './style/base.less';
+import '../src/styles/main.scss';
+import '../src/sass/index.scss';
+
+// 该项目所有请求使用mockjs模拟
+import './mock/index.js';
+
 
 // 4.plugins: vux插件;
 import { LocalePlugin, DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, AppPlugin } from 'vux'

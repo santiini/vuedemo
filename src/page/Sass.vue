@@ -124,6 +124,11 @@
         </group>
         <!--<div>动画frame</div>-->
         <!--<div class="sass-frame"></div>-->
+        <group title="测试全局引入的scss文件">
+          <cell title="变量">
+            <div class="">variables变量测试</div>
+          </cell>
+        </group>
     </div>
 </template>
 

@@ -1,9 +1,94 @@
-// 所有scss文件的整合;
+/*
+* 所有scss文件的整合;
+* 主文件（通常写作 main.scss）应该是整个代码库中唯一开头不用下划线命名的 Sass 文件。除
+* @import 和注释外，该文件不应该包含任何其他代码。
+*/
 
-// helpers;
-@import './utils/_variables';
-@import './utils/_mixins';
-@import './utils/_functions';
-@import './utils/_keyframes';
-@import './utils/_helpers';
-@import './utils/_map';
+// 1.文件应该按照存在的位置顺序依次被引用进来：
+
+// 文件引入：方式一
+@import 'utils/variables';
+@import 'utils/variables2';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/helpers';
+@import 'utils/map';
+// @import 'utils/placeholders';
+
+@import 'vendors/bootstrap';
+@import 'vendors/jquery-ui';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/navigation';
+@import 'layout/mediaqueries';
+// @import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'layout/forms';
+
+@import 'components/buttons';
+@import 'components/carousel';
+// @import 'components/cover';
+// @import 'components/dropdown';
+
+@import 'pages/home';
+@import 'pages/contact';
+
+@import 'themes/theme';
+@import 'themes/admin';
+
+@import 'base/base';
+@import 'base/reset';
+
+// 文件引入：方式二;
+// @import
+//   'utils/variables',
+//   'utils/functions',
+//   'utils/mixins',
+//   'utils/placeholders';
+
+// @import
+//   'vendors/bootstrap',
+//   'vendors/jquery-ui';
+
+// @import
+//   'base/reset',
+//   'base/typography';
+
+// @import
+//   'layout/navigation',
+//   'layout/grid',
+//   'layout/header',
+//   'layout/footer',
+//   'layout/sidebar',
+//   'layout/forms';
+
+// @import
+//   'components/buttons',
+//   'components/carousel',
+//   'components/cover',
+//   'components/dropdown';
+
+// @import
+//   'pages/home',
+//   'pages/contact';
+
+// @import
+//   'themes/theme',
+//   'themes/admin';
+
+
+// // 文件引入：方式三;
+// @import 'abstracts/*';
+// @import 'vendors/*';
+// @import 'base/*';
+// @import 'layout/*';
+// @import 'components/*';
+// @import 'pages/*';
+// @import 'themes/*';
+
+
+// tips: 不同的引入方式需要的注意点请查看：https://github.com/HugoGiraudel/sass-guidelines/blob/master/pages/zh/_architecture.md

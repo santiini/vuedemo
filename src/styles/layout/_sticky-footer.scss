@@ -1,0 +1,21 @@
+//  sticky footer
+//  ---------------------
+
+$footer-height : 200px;
+
+.container {
+	position: relative;
+	min-height: 100%;
+
+	margin-bottom: -$footer-height;
+
+}
+
+footer[role="contentinfo"], .footer-push {
+	height: $footer-height;
+}
+
+footer[role="contentinfo"] {
+	position: relative;
+	padding-top: 50px;
+}

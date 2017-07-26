@@ -68,4 +68,331 @@ $media-stack:
 }
 
 
-// 
+//  Map 学习;
+// 1. Map 是以 key:value 的形式出现;
+// 2. Sass的map允许嵌套，其实就是把某一个key当成map,里面继续放一对或者多对的key:value
+
+    // demo1;
+$theme-color: (
+    default: (
+        bgcolor: #ccc,
+        text-color: #000,
+        link-color: #39f
+    ),
+    primary:(
+        bgcolor: #000,
+        text-color:#fff,
+        link-color: #93f
+    ),
+    negative: (
+        bgcolor: #f36,
+        text-color: #fefefe,
+        link-color: #d4e
+    ),
+    a: #123
+);
+
+    // demo2:  当key不在map中时，map_get返回Null.不会返回错误;
+$fontSize: (
+    default: 12px,
+    lgSize: 24px,
+    mdSize: 18px
+);
+
+    // demo3:  利用 map 的获取，判断等的方法;
+$social-colors: (
+    facebook: #3b5998,
+    github: #171515,
+    google: #db4437,
+    twitter: #55acee
+);
+@function colors($color){
+    @if not map-has-key($social-colors,$color){
+        @warn "No color found for `#{$color}` in $social-colors map. Property omitted.";
+    }
+    @return map-get($social-colors,$color);
+}
+.btn-facebook {
+    color: colors(facebook);
+}
+.btn-github {
+    color: colors(github);
+}
+.btn-google {
+    color: colors(google);
+}
+.btn-twitter {
+    color: colors(twitter);
+}
+.btn-weibo {
+    color: colors(weibo);
+}
+
+// demo3的强化版;
+@each $social-network,$social-color in $social-colors {
+    .btn-#{$social-network} {
+        color: $social-color;
+    }
+}
+
+// demo3的改版;
+$globalColors: (
+    default: #ccc,
+    active: #DCFD63,
+    hover: #463DFD,
+    link: #FD7556
+);
+
+@function colors($color){
+    $names: map-keys($globalColors);
+    @if index($names, $color){
+        @return map-get($globalColors, $color);
+    }
+
+    @warn "Warning: '#{$color}' is not a valid color name.";
+};
+
+.btn-default{
+    color: colors(default);
+    &:hover{
+        color: colors(hover);
+    }
+    &:link{
+        color: colors(link);
+    }
+    &:active{
+        color: colors(active);
+    }
+}
+
+// demo4: 我们可以使用一个循环来遍历不同的map，达到指定不同皮肤的功效。
+$background_color: (
+    jeremy: #0989cb,
+    beth: #8666ae,
+    matt: #02bba7,
+    ryan: #ff8178
+);
+$font: (
+    jeremy: Helvetica,
+    beth: Verdana,
+    matt: Times,
+    ryan: Arial
+);
+@each $key, $value in $background_color {
+    .#{$key} {
+        background: $value;
+        font-family: map-get($font, $key);
+    }
+}
+// tips: 输入值既对应不用css的不用皮肤;
+
+
+// demo5: 下面代码演示如何在项目管理中如何进行断点管理。
+// _config.scss
+$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+// _mixins.scss
+@mixin respond-to($breakpoint) { 
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// _component.scss
+.element {
+  color: hotpink;
+
+  @include respond-to(small) {
+    color: tomato;
+  }
+}
+
+
+// demo6: 下面我们来看map在处理前缀mixin中的应用，两个参数类型分别为map和list，使用需要注意。
+/*定义*/
+/// Mixin to prefix several properties at once
+/// @author Hugo Giraudel
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+/*使用*/
+.selector {
+  @include prefix((
+    column-count: 3,
+    column-gap: 1.5em,
+    column-rule: 2px solid hotpink
+  ), webkit moz);
+}
+
+// 输入结果是;
+// .selector {
+//   -webkit-column-count: 3;
+//   -moz-column-count: 3;
+//   column-count: 3;
+//   -webkit-column-gap: 1.5em;
+//   -moz-column-gap: 1.5em;
+//   column-gap: 1.5em;
+//   -webkit-column-rule: 2px solid hotpink;
+//   -moz-column-rule: 2px solid hotpink;
+//   column-rule: 2px solid hotpink;
+// }
+
+
+// demo7: Hugo Giraudel大牛定义的反向函数。
+/*定义*/
+/// Returns the opposite direction of each direction in a list
+/// @author Hugo Giraudel
+/// @param {List} $directions - List of initial directions
+/// @return {List} - List of opposite directions
+@function opposite-direction($directions) {
+    // $opposite-directions: 这是一个list;
+  $opposite-directions: ();
+  $direction-map: (
+    'top':    'bottom',
+    'right':  'left',
+    'bottom': 'top',
+    'left':   'right',
+    'center': 'center',
+    'ltr':    'rtl',
+    'rtl':    'ltr'
+  );
+
+  @each $direction in $directions {
+    $direction: to-lower-case($direction);
+
+    @if map-has-key($direction-map, $direction) { 
+        // list function: append($list1, $val, [$separator])
+      $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+    } @else {
+      @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+    }
+  }
+
+  // 返回list
+  @return $opposite-directions;
+}
+/*使用*/
+.selector {
+  background-position: opposite-direction(top right);
+}
+
+
+// demo8: map自定义函数
+
+// 有的时候我们需要把两个列表转成map，这个时候我们可以用到自定义的map-zip函数。
+/// An equivalent of `zip` function but for maps.
+/// Takes two lists, the first for keys, second for values.
+/// @param {List} $keys - Keys for map
+/// @param {List} $values - Values for map
+/// @return {Map} Freshly created map
+/// @see http://sass-lang.com/documentation/Sass/Script/Functions.html#zip-instance_method
+@function map-zip($keys, $values) {
+  $l-keys: length($keys);
+  $l-values: length($values);
+  $min: min($l-keys, $l-values);
+  $map: ();
+
+  @if $l-keys != $l-values {
+    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. "
+        + "Resulting map will only have #{$min} pairs.";
+  }
+
+  @if $min == 0 {
+    @return $map;
+  }
+
+  @for $i from 1 through $min {
+    $map: map-merge($map, (nth($keys, $i): nth($values, $i)));
+  }
+
+  @return $map;
+}
+//usage
+$layout-names: 'small', 'medium', 'large', 'huge';
+$layout-values: 600px, 900px, 1200px, 1500px;
+
+$breakpoints: map-zip($layout-names, $layout-values);
+// -> ('small': 600px, 'medium': 900px, 'large': 1200px, 'huge': 1500px)
+
+
+// demo9: icons的制作;
+$icons: (
+    glass: "\f000",
+    music: "\f001",
+    search: "\f002",
+    envelope-o: "\f003",
+    heart: "\f004"
+);
+
+@each $name, $icon in $icons {
+    .fa-#{$name}:before {
+        content: $icon;
+    }
+}
+
+
+// demo10: map可以像css的形似一样去写scss, 而且更加模块化，便于管理;
+
+    // demo10-1: 简单的使用;
+// _mixins.scss
+@mixin print($declarations) {
+  @each $property, $value in $declarations {
+    #{$property}: $value
+  }
+}
+// _component.scss
+.element {
+  @include print((
+    margin: 0 auto,
+    max-width: 50%,
+    overflow: hidden
+  ));
+}
+
+// demo10-2: 为了模块化, 添加了 map数据;
+// _component.scss
+$configuration: (
+  padding: 1em,
+  margin: 0 1em,
+  color: grey
+);
+
+.element {
+  color: map-get($configuration, color);
+  padding: map-get($configuration, padding);
+  margin: map-get($configuration, margin);
+
+  &::before {
+    background-color: map-get($configuration, color);
+  }
+}
+
+// demo10-3: 使用了map和mixin 后的模块化;
+// _component.scss
+.element {
+  @include print($configuration);
+
+  &::before {
+    background-color: map-get($configuration, color);
+  }
+}

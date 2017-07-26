@@ -48,19 +48,20 @@ export default function fetchData(options) {
     );
 
     // axios请求处理;
-    instance(options)
+    return instance(options)
       .then(response => response.data)
       .then(result => {
+        return resolve(result);
         // 判断响应 --> 并进行统一性的处理;
-        if (result.code !== 0) {
-          console.log(options);  // 调试;
-          // 统一进行的错误处理;
+        // if (result.code !== 0) {
+        //   console.log(options);  // 调试;
+        //   // 统一进行的错误处理;
 
 
-          reject(result);
-        } else {
-          resolve(result);
-        }
+        //   reject(result);
+        // } else {
+        //   resolve(result);
+        // }
       })
       .catch(error => {
         console.log(error); // 调试使用;
