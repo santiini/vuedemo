@@ -160,6 +160,22 @@ export default new Router({
         isShown: true,
         name: 'inheritAttrs'
       }
-    },
+    }, {
+      path: '/indexedDB',
+      name: 'indexedDB',
+      component: resolve => require(['page/indexedDB'], resolve),
+      meta: {
+        isShown: true,
+        name: 'indexedDB'
+      }
+    }, {
+      path: '/filterColor',
+      name: 'filter-color',
+      component: resolve => require(['page/FilterColor'], resolve),
+      meta: {
+        isShown: true,
+        name: 'filterColor'
+      }
+    }
   ]
 })
