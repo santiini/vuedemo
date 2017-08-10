@@ -176,7 +176,8 @@ export default new Router({
         isShown: true,
         name: 'filterColor'
       }
-    }, {
+    },
+    {
       path: '/mosonry',
       name: 'mosonry',
       component: resolve => require(['page/VueMasonry'], resolve),
@@ -184,6 +185,24 @@ export default new Router({
         isShown: true,
         name: 'mosonry'
       }
-    }
+    },
+    {
+      path: '/onload',
+      name: 'onload',
+      component: resolve => require(['page/ImageOnload'], resolve),
+      meta: {
+        isShown: true,
+        name: 'onload'
+      }
+    },
+    {
+      path: '/uploadasync',
+      name: 'uploadasync',
+      component: resolve => require(['page/ImageOnload'], resolve),
+      meta: {
+        isShown: true,
+        name: 'uploadasync....'
+      }
+    },
   ]
 })

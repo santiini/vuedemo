@@ -163,4 +163,10 @@ this.$store.dispatch('prevProblem')
     4.都可以css继承, sass必须借助于 @extend 继承，less既可以使用@extend,也可以直接使用;
     5.都可以使用变量；sass的变量声明更灵活，可以添加 !default等关键字;
 
+### sass, less变量的全局使用 -- sass-resources-loader
+
+修改文件： build文件夹，找到util.js
+
+参考文章： https://juejin.im/entry/5975b1b3f265da6c4977c666
+
 ## 下一项：vue-ssr

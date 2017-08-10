@@ -8,6 +8,8 @@ module.exports = {
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
+        // assetsPublicPath: './',  // 本地打开;
+        // assetsPublicPath: '/qyhsite/vote/',  //  投票服务; tips:  部署到服务器上对应的路径; 如果要本地预览可以设为： './'
         productionSourceMap: true,
         // Gzip off by default as many popular static hosts such as
         // Surge or Netlify already gzip all static assets for you.
@@ -24,11 +26,11 @@ module.exports = {
     dev: {
         env: require('./dev.env'),
         port: 8084,
-        // autoOpenBrowser: true,
+        // autoOpenBrowser: true,   // 自动打开浏览器;
         autoOpenBrowser: false,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        proxyTable: {
+        proxyTable: {    // 代理接口，卡解决开发节阶段的跨域问题;
             '/users/upload': {
                 target: 'localhost:3000',
                 changeOrigin: true,
