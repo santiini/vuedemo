@@ -36,6 +36,18 @@ Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
 Vue.use(LocalePlugin)
 
+// 引入滚动插件;
+import VueScroller from 'vue-scroller';
+Vue.use(VueScroller);
+
+// 引入vue-masonry 瀑布流插件;
+import VueMasonryPlugin from 'vue-masonry';
+Vue.use(VueMasonryPlugin);
+
+// 用户自定义公共组件;
+import { CommonPlugin } from 'plugins';
+Vue.use(CommonPlugin, store, router);
+
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false

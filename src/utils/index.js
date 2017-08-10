@@ -26,7 +26,24 @@ function param2Obj(url) {
    return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
  }
 
+ // 获取图片尺寸;
+function getImageSize(img) {
+    if (!img.naturalWidth) return
+    return {
+        width: img.naturalWidth,
+        height: img.naturalWidth
+    }
+    // ie6/7/8 处理;
+    // const imgEle = document.createElement('img');
+    // imgEle.src = domain + uri;
+    // imgEle.onload = () => {
+    //     console.log(imgEle.width)
+    //     console.log(imgEle.height)
+    // }
+}
+
 export {
     getImage,
-    param2Obj
+    param2Obj,
+    getImageSize
 }

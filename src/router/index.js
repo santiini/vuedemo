@@ -176,6 +176,14 @@ export default new Router({
         isShown: true,
         name: 'filterColor'
       }
+    }, {
+      path: '/mosonry',
+      name: 'mosonry',
+      component: resolve => require(['page/VueMasonry'], resolve),
+      meta: {
+        isShown: true,
+        name: 'mosonry'
+      }
     }
   ]
 })

@@ -146,6 +146,8 @@ export default {
     }
   }
 }
+
+// 组件参考： https://github.com/greedying/vux-uploader
 </script>
 <style scoped lang="less">
 @import '~vux/src/styles/weui/widget/weui-uploader/index.less';
