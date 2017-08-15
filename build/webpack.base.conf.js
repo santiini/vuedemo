@@ -7,6 +7,9 @@ const vuxLoader = require('vux-loader')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
+// 加入webpack对象：
+var webpack = require('webpack');
+
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -74,7 +77,7 @@ let webpackConfig = {
                     appendTsSuffixTo: [/\.vue$/],
                 }
             },
-              // 支持全局引用scss文件;
+              // 支持全局引用scss文件 -- 无效更改，仅供参考，需要其他实现;
             // {
             //     test: /\.scss$/,
             //     use: [
@@ -95,7 +98,17 @@ let webpackConfig = {
             //     ],
             // },
         ]
-    }
+    },
+    // 插件使用;
+    plugins: [
+      // 3. 配置全局使用 jquery
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        jquery: 'jquery',
+        "window.jQuery": 'jquery',
+      })
+    ]
 }
 
 

@@ -1652,6 +1652,10 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
+dexie@^1.5.1:
+  version "1.5.1"
+  resolved "http://registry.npm.taobao.org/dexie/download/dexie-1.5.1.tgz#ac3ad5a0ebaf7e6e42760db58710418d4a756624"
+
 diffie-hellman@^5.0.0:
   version "5.0.2"
   resolved "http://registry.npm.taobao.org/diffie-hellman/download/diffie-hellman-5.0.2.tgz#b5835739270cfe26acf632099fded2a07f209e5e"
@@ -2697,6 +2701,10 @@ jodid25519@^1.0.0:
   resolved "http://registry.npm.taobao.org/jodid25519/download/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+jquery@>=1.4.4, jquery@>=1.7.2, jquery@^3.2.1:
+  version "3.2.1"
+  resolved "http://registry.npm.taobao.org/jquery/download/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.1.9"
@@ -4470,6 +4478,12 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/slash/download/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
+slick-carousel@^1.6.0, slick-carousel@^1.7.1:
+  version "1.7.1"
+  resolved "http://registry.npm.taobao.org/slick-carousel/download/slick-carousel-1.7.1.tgz#51f5489bbb52212542ccbe9f42689f818bd29ed2"
+  dependencies:
+    jquery ">=1.7.2"
+
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
@@ -4976,6 +4990,15 @@ vue-hot-reload-api@^2.0.11:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
 
+vue-idb@^0.1.2:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/vue-idb/download/vue-idb-0.1.2.tgz#a519168052e468289ad59d60b5fa9d650e7dac3d"
+  dependencies:
+    dexie "^1.5.1"
+    lodash "^4.17.4"
+    vue "^2.3.3"
+    vuex "^2.3.1"
+
 vue-loader@^11.1.4:
   version "11.3.4"
   resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-11.3.4.tgz#65e10a44ce092d906e14bbc72981dec99eb090d2"
@@ -5012,6 +5035,12 @@ vue-scroller@^2.2.2:
   dependencies:
     vue "^2.2.6"
 
+vue-slick@^1.1.9:
+  version "1.1.9"
+  resolved "http://registry.npm.taobao.org/vue-slick/download/vue-slick-1.1.9.tgz#b8916c49124f0b17eea6b155a771f3a8a9789fb4"
+  dependencies:
+    slick-carousel "^1.6.0"
+
 vue-style-loader@^2.0.0:
   version "2.0.5"
   resolved "http://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-2.0.5.tgz#f0efac992febe3f12e493e334edb13cd235a3d22"
@@ -5036,7 +5065,7 @@ vue-video-player@^3.1.4:
   dependencies:
     video.js "^5.11.7"
 
-vue@^2.0.0, vue@^2.2.1, vue@^2.2.6, vue@^2.4.2:
+vue@^2.0.0, vue@^2.2.1, vue@^2.2.6, vue@^2.3.3, vue@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.2.tgz#a9855261f191c978cc0dc1150531b8d08149b58c"
 
@@ -5054,7 +5083,7 @@ vuex-router-sync@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/vuex-router-sync/-/vuex-router-sync-4.2.0.tgz#ebfc497d69b4018a9266a8f18b54bfca4d52125f"
 
-vuex@^2.1.1:
+vuex@^2.1.1, vuex@^2.3.1:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/vuex/download/vuex-2.3.1.tgz#cde8e997c1f9957719bc7dea154f9aa691d981a6"
 
@@ -5379,3 +5408,9 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+ztree@^3.5.24:
+  version "3.5.24"
+  resolved "http://registry.npm.taobao.org/ztree/download/ztree-3.5.24.tgz#b63fe52981fdf2c329675cfd2772f0d147521ff1"
+  dependencies:
+    jquery ">=1.4.4"

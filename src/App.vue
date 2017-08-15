@@ -38,4 +38,9 @@ export default {
 body {
   background-color: #fbf9fe;
 }
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 </style>

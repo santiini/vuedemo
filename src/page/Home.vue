@@ -37,6 +37,17 @@ export default {
     // console.log(router.options.routes)
     this.menuList = router.options.routes
 
+    //   indexedDB的使用;
+    // console.log(this.$idb)
+    // this.$idb.initIndexedDB('demo1')
+    //   .then(result => {
+    //     // console.log(result)
+    //   })
+    //   .catch(err => console.log(err))
+
+    // dexie
+    // console.log(this.$db)
+
     // header
     this.$store.dispatch('setHeader', {
       title: 'Vux学习',

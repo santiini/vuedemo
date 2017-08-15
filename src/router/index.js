@@ -204,5 +204,23 @@ export default new Router({
         name: 'uploadasync....'
       }
     },
+    {
+      path: '/ztree',
+      name: 'ztree',
+      component: resolve => require(['page/VueZtree'], resolve),
+      meta: {
+        isShown: true,
+        name: 'ztree'
+      }
+    },
+    {
+      path: '/slick',
+      name: 'slick',
+      component: resolve => require(['page/VueSlick'], resolve),
+      meta: {
+        isShown: true,
+        name: 'slick'
+      }
+    },
   ]
 })

@@ -44,9 +44,27 @@ Vue.use(VueScroller);
 import VueMasonryPlugin from 'vue-masonry';
 Vue.use(VueMasonryPlugin);
 
+// 引用vue-idb indexedDB插件;
+// import VUeIdb from 'vue-idb';
+// Vue.use(VUeIdb);
+// // 新建indexDB数据库;
+// const idb = new VUeIdb({
+//   version: 1,
+//   database: 'test',
+//   schemas: [
+//     { tests: 'id, title, created_at, updated_at'},
+//     { posts: 'id, owner'}
+//   ]
+// })
+
+// console.log(idb)
+
 // 用户自定义公共组件;
-import { CommonPlugin } from 'plugins';
+import { CommonPlugin, IndexedDB } from 'plugins';
 Vue.use(CommonPlugin, store, router);
+Vue.use(IndexedDB, {
+  name: 'demo'
+})
 
 FastClick.attach(document.body)
 
@@ -65,6 +83,7 @@ router.beforeEach((to, from, next) => {
 const app = new Vue({
     router,
     store,
+    // idb,
     render: h => h(App),
     // // 事件处理器, eventHub;
     data() {
