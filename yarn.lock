@@ -854,6 +854,12 @@ better-scroll@^0.1.15:
   dependencies:
     babel-runtime "^6.0.0"
 
+better-scroll@^1.3.0:
+  version "1.3.0"
+  resolved "http://registry.npm.taobao.org/better-scroll/download/better-scroll-1.3.0.tgz#091564d9074d13d16e46917a1d472e58fad26686"
+  dependencies:
+    babel-runtime "^6.0.0"
+
 big.js@^3.1.3:
   version "3.1.3"
   resolved "http://registry.npm.taobao.org/big.js/download/big.js-3.1.3.tgz#4cada2193652eb3ca9ec8e55c9015669c9806978"
@@ -1717,6 +1723,10 @@ dot-prop@^3.0.0:
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-3.0.0.tgz#1b708af094a49c9a0e7dbcad790aba539dac1177"
   dependencies:
     is-obj "^1.0.0"
+
+dplayer@^1.5.0:
+  version "1.5.1"
+  resolved "http://registry.npm.taobao.org/dplayer/download/dplayer-1.5.1.tgz#3d04b5cb9ba097b24d7dca6603933eda894ad24e"
 
 draftlog@^1.0.10:
   version "1.0.12"
@@ -4327,6 +4337,12 @@ rust-result@^1.0.0:
   dependencies:
     individual "^2.0.0"
 
+rxjs@^5.4.3:
+  version "5.4.3"
+  resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
+  dependencies:
+    symbol-observable "^1.0.1"
+
 safe-buffer@5.1.1, safe-buffer@^5.0.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -4663,6 +4679,10 @@ style-loader@^0.18.2:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+super-loading@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/super-loading/download/super-loading-1.0.1.tgz#6ed6dcbeb157e7d91285cb624980d550e1035cb0"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -4690,6 +4710,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+symbol-observable@^1.0.1:
+  version "1.0.4"
+  resolved "http://registry.npm.taobao.org/symbol-observable/download/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
 
 tapable@^0.2.5, tapable@~0.2.5:
   version "0.2.6"
@@ -4986,6 +5010,24 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-better-scroll@^1.0.5:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/vue-better-scroll/download/vue-better-scroll-1.0.5.tgz#d632a5f0389822acda1f1e2c218f3e4eaad643c3"
+  dependencies:
+    better-scroll "^1.3.0"
+    vue "^2.3.3"
+
+vue-dplayer@^0.0.3:
+  version "0.0.3"
+  resolved "http://registry.npm.taobao.org/vue-dplayer/download/vue-dplayer-0.0.3.tgz#ac9b88276d4dd5dc25341e0229adf7ea9e7da4b5"
+  dependencies:
+    dplayer "^1.5.0"
+    vue-github-badge "^1.0.0"
+
+vue-github-badge@^1.0.0:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/vue-github-badge/download/vue-github-badge-1.0.1.tgz#dff7ce07320e64a218edf106b15a43176ec06106"
+
 vue-hot-reload-api@^2.0.11:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
@@ -5016,6 +5058,12 @@ vue-loader@^11.1.4:
     vue-style-loader "^2.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
+vue-marquee-ho@^1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/vue-marquee-ho/download/vue-marquee-ho-1.2.1.tgz#bead552eaf8f45d3c7444e708546fae9e32feecf"
+  dependencies:
+    vue "^2.2.6"
+
 vue-masonry@^0.10.4:
   version "0.10.4"
   resolved "http://registry.npm.taobao.org/vue-masonry/download/vue-masonry-0.10.4.tgz#67f5625a63f1be51c5728cab8a9fc12f39c4facc"
@@ -5025,9 +5073,20 @@ vue-masonry@^0.10.4:
     masonry-layout "4.1.1"
     vue "^2.0.0"
 
+vue-pay-keyboard@^1.1.2, vue-pay-keyboard@^1.1.4:
+  version "1.1.4"
+  resolved "http://registry.npm.taobao.org/vue-pay-keyboard/download/vue-pay-keyboard-1.1.4.tgz#a3df27445c58226a02babde620f7c148f7fa8070"
+  dependencies:
+    vue "^2.3.3"
+    vue-pay-keyboard "^1.1.2"
+
 vue-router@^2.2.0:
   version "2.5.3"
   resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.5.3.tgz#073783f564b6aece6c8a59c63e298dc2aabfb51b"
+
+vue-rx@^3.3.0:
+  version "3.3.0"
+  resolved "http://registry.npm.taobao.org/vue-rx/download/vue-rx-3.3.0.tgz#aeb1689d28a94bd516849f82b5a3be2684e5f61f"
 
 vue-scroller@^2.2.2:
   version "2.2.2"

@@ -9,7 +9,7 @@ const header = {
             showMore: false
         },
         leftOption: {
-            showBack: false
+            showBack: true
         },
         clickEvent: {},
         isShown: true
@@ -21,7 +21,7 @@ const header = {
         SET_HEADER: (state, { title, rightOption, leftOption, clickFunc, isShown }) => {
             state.title = title || '企业活动'
             state.rightOption = rightOption || { showMore: false }
-            state.leftOption = leftOption || { showBack: false }
+            state.leftOption = leftOption || { showBack: true }
                 // state.clickFunc = clickFunc
             state.isShown = isShown || true
         }
@@ -37,3 +37,4 @@ const header = {
 };
 
 export default header;
+

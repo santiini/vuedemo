@@ -4,6 +4,9 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import App from './App'
 import { sync } from 'vuex-router-sync';
+import VueBetterScroller from 'vue-better-scroll'
+import vuePayKeyboard from 'vue-pay-keyboard'
+import VueMar from 'vue-marquee-ho'
 
 //1. 引入单独的router;
 import router from './router';
@@ -43,6 +46,29 @@ Vue.use(VueScroller);
 // 引入vue-masonry 瀑布流插件;
 import VueMasonryPlugin from 'vue-masonry';
 Vue.use(VueMasonryPlugin);
+console.log(VueMasonryPlugin)
+
+// console.log(vuePayKeyboard)
+// console.log(VueBetterScroller)
+// console.log(VueMar)
+// console.log(VueScroller)
+// Vue.use(vuePayKeyboard)
+Vue.use(VueBetterScroller)
+
+
+// 引入vue-rx rxjs的使用;
+import Rx from 'rxjs/Rx';
+import VueRx from 'vue-rx';
+Vue.use(VueRx, Rx);
+// 减小体积;
+// import { Observable } from 'rxjs/Observable'
+// import { Subscription } from 'rxjs/Subscription' // 如果使用 RxJS 4 可自由使用
+// import { Subject } from 'rxjs/Subject' // domStreams 选项所需
+// Vue.use(VueRx, {
+//   Observable,
+//   Subscription,
+//   Subject
+// })
 
 // 引用vue-idb indexedDB插件;
 // import VUeIdb from 'vue-idb';

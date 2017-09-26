@@ -26,7 +26,7 @@ let webpackConfig = {
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'], // webpack2.0后，设置省略文件类型名称;
-        alias: {
+        alias: { // 别名
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
             'page': resolve('src/page'),
@@ -52,6 +52,7 @@ let webpackConfig = {
                 loader: 'babel-loader',
                 include: [resolve('src'), resolve('test')]
             },
+            // url-loader 和 file-loader负责解决文件的路径引用问题，还有小图片转化为base64形式的问题;
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',

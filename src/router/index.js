@@ -222,5 +222,59 @@ export default new Router({
         name: 'slick'
       }
     },
+    {
+      path: '/rxjs',
+      name: 'rxjs',
+      component: resolve => require(['page/Rxjs/demo3'], resolve),
+      meta: {
+        isShown: true,
+        name: 'rxjs'
+      }
+    },
+    {
+      path: '/create',
+      name: 'create',
+      component: resolve => require(['page/CreateElement'], resolve),
+      meta: {
+        isShown: true,
+        name: 'CreateElement'
+      }
+    },
+    {
+      path: '/video',
+      name: 'create',
+      component: resolve => require(['page/Video'], resolve),
+      meta: {
+        isShown: true,
+        name: 'video'
+      }
+    },
+    {
+      path: '/class',
+      name: 'class',
+      component: resolve => require(['page/DemoClass'], resolve),
+      meta: {
+        isShown: true,
+        name: 'es6-class'
+      }
+    },
+    {
+      path: '/es6class',
+      name: 'es6class',
+      component: resolve => require(['page/Es6Class'], resolve),
+      meta: {
+        isShown: true,
+        name: 'es6-class2'
+      }
+    },
+    {
+      path: '/npmplugin',
+      name: 'npmplugin',
+      component: resolve => require(['page/NpmPlugin'], resolve),
+      meta: {
+        isShown: true,
+        name: 'myNpmPlugins'
+      }
+    },
   ]
 })

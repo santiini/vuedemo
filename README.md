@@ -165,6 +165,21 @@ this.$store.dispatch('prevProblem')
 
 ### sass, less变量的全局使用 -- sass-resources-loader
 
+### dexie--indexed的封装库，基于vue的使用
+    参考：<br>
+    1.diexie官网: http://dexie.org/docs/Collection/Collection.modify().html </br>
+    2.vue-idb:  https://github.com/ddgll/vue-idb/
+
+### vue-rxjs 的结合使用；
+参考： https://github.com/vuejs/vue-rx
+
+### vue的第三方库
+
+    1. vue-scroller: 解决滚动的问题;
+    2. vue-masonry: 瀑布流;
+    3. vue-video-player: 视频播放， ios10 好像有小问题;
+    4. vue-core-image-upload: 图片上传;
+
 修改文件： build文件夹，找到util.js
 
 参考文章： https://juejin.im/entry/5975b1b3f265da6c4977c666
